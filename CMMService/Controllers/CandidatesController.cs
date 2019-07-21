@@ -19,6 +19,7 @@ namespace CMMService.Controllers
         private const string Cache_Key_Candidates = "candidateprofiledata";
 
         [HttpGet]
+        [ActionName("DefaultAction")]
         public HttpResponseMessage GetCandidates()
         {
             using (CandidateProfileDBContext candidateProfileDBContext = new CandidateProfileDBContext())
