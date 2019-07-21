@@ -219,7 +219,7 @@ namespace CMMService.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage GetFile(int fileId)
+        public HttpResponseMessage GetFile(int candidateId)
         {
             //Create HTTP Response.
             HttpResponseMessage http_Response = Request.CreateResponse(HttpStatusCode.OK);
@@ -227,7 +227,7 @@ namespace CMMService.Controllers
             //Get the File data from Database based on File ID.
             using (var context = new CandidateProfileDBContext())
             {
-                ProfileDocument profileDocument = context.ProfileDocuments.Find(fileId);
+                ProfileDocument profileDocument = context.ProfileDocuments.Find(candidateId);
                 if (profileDocument != null)
                 {
                     HttpResponseMessage httpResponseMessage = Request.CreateResponse(HttpStatusCode.OK);
