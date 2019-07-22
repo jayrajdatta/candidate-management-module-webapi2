@@ -34,7 +34,7 @@ namespace CMMService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, cache.Get(Cache_Key_Candidates));
                 else
                 {
-                    var candidates = candidateProfileDBContext.Candidates.Select(c => new { c.CandidateId, c.FullName, c.DOB, c.Domain, c.ProfileDocument.DocumentName }).ToList();
+                    var candidates = candidateProfileDBContext.Candidates.Select(c => new { c.CandidateId, c.FullName, c.DOB, c.Domain, c.ProfileDocument.DocumentName }).OrderBy(c => c.FullName).ToList();
 
                     // Store data in the cache    
                     CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
