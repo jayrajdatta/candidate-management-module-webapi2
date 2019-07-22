@@ -51,9 +51,9 @@ namespace CMMService.Controllers
         {
             using (CandidateProfileDBContext candidateProfileDBContext = new CandidateProfileDBContext())
             {
-                var candidate = candidateProfileDBContext.Candidates.Select(c => new { c.CandidateId, c.FullName, c.DOB, c.Domain, c.ProfileDocument.DocumentName, c.ProfileDocument.DocumentData }).Where(can => can.CandidateId == id).ToList();
+                var candidate = candidateProfileDBContext.Candidates.Select(c => new { c.CandidateId, c.FullName, c.DOB, c.Domain, c.ProfileDocument.DocumentName, c.ProfileDocument.DocumentData }).Where(can => can.CandidateId == id).FirstOrDefault();
 
-                if(candidate!= null && candidate.Count > 0)
+                if(candidate!= null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, candidate);
                 }
